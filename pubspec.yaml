@@ -83,6 +83,9 @@ flutter:
     - images/ethio-logo.png
     - images/christmas.png
     - images/br7logo.png
+    - assets/images/Zemen.png
+    - assets/images/Zemen.jpg
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

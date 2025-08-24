@@ -8,21 +8,22 @@ List<String> topGridLabel = [
   'Financial Service With Dashen',
   'Financial Service With CBE',
   'Pay for Merchants',
-  'App'
+  'Transfer to Bank',
 ];
 List<String> bottomGridLabel = [
   '33rd Chrismass traid fair',
   'Pay Ethio telecome Bill',
   'Schedule Payment',
-  'Transfer to Bank',
+  'App',
   'Transfer to Wallet',
   'Fuel payment',
   'Nearby Fuel Station',
-  'More'
+  'More',
 ];
 
 List<Image> carouselImages = const [
   Image(image: AssetImage('images/banner-1.jpg')),
   Image(image: AssetImage('images/banner-2.jpg')),
   Image(image: AssetImage('images/banner-3.jpg')),
+  Image(image: AssetImage('images/Zemen.jpg')),
 ];

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:telebirr/screens/SendMoney.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class GridContent extends StatelessWidget {
@@ -33,9 +34,7 @@ class GridContent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               gridIcon[index],
-              const SizedBox(
-                height: 5,
-              ),
+              const SizedBox(height: 5),
               Text(
                 gridLabel[index],
                 maxLines: 3,
@@ -59,13 +58,10 @@ class GridContent extends StatelessWidget {
 
 class GridIcons extends StatelessWidget {
   final IconData icon;
-  const GridIcons({
-    super.key,
-    required this.icon,
-  });
+  const GridIcons({super.key, required this.icon});
 
   @override
-  Widget build(BuildContextcontext) {
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: icon == Icons.ad_units_outlined
@@ -87,24 +83,32 @@ class GridIcons extends StatelessWidget {
   }
 }
 
-List<Widget> topGridIcon = const [
-  GridIcons(icon: Icons.wallet),
-  GridIcons(icon: Icons.wallet_giftcard),
-  GridIcons(icon: Icons.ad_units_outlined),
-  GridIcons(icon: Icons.clean_hands_sharp),
-  Image(image: AssetImage('images/dashen.png'), width: 20),
-  Image(
-    image: AssetImage('images/cbe.png'),
-    width: 40,
+List<Widget> topGridIcon = [
+  Builder(
+    builder: (context) => InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Sendmoney()),
+        );
+      },
+      child: const GridIcons(icon: Icons.wallet),
+    ),
   ),
-  GridIcons(icon: Icons.storefront),
-  GridIcons(icon: Icons.window_sharp),
+  const GridIcons(icon: Icons.wallet_giftcard),
+  const GridIcons(icon: Icons.ad_units_outlined),
+  const GridIcons(icon: Icons.clean_hands_sharp),
+  const Image(image: AssetImage('images/dashen.png'), width: 20),
+  const Image(image: AssetImage('images/cbe.png'), width: 40),
+  const GridIcons(icon: Icons.storefront),
+  const GridIcons(icon: FontAwesomeIcons.bank),
 ];
+
 List<Widget> bottomGridIcon = const [
   Image(image: AssetImage('images/christmas.png'), width: 70),
   Image(image: AssetImage('images/ethio-logo.png'), width: 30),
   GridIcons(icon: Icons.calendar_month_outlined),
-  GridIcons(icon: FontAwesomeIcons.bank),
+  GridIcons(icon: Icons.window_sharp),
   GridIcons(icon: Icons.wallet_sharp),
   GridIcons(icon: Icons.payments_outlined),
   GridIcons(icon: Icons.location_on),

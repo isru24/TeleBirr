@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         'home': (context) => HomeScreen(),
         'main': (context) => MainScreen(),
       }, // Wrap widgets
-      home: Loginpage(),
+      home: MainScreen(),
     );
   }
 }
