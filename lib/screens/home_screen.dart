@@ -10,7 +10,6 @@ import 'package:telebirr/widgets/notification_area.dart';
 import 'package:telebirr/widgets/transaction%20detail.dart';
 import 'package:telebirr/widgets/user_introduction.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -23,25 +22,21 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(245, 245, 245, 1),
       appBar: AppBar(
         systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: Color.fromRGBO(140, 199, 63, 1),
           statusBarIconBrightness: Brightness.dark,
         ),
-        backgroundColor: Colors.white,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Image.asset(
-              'images/ethio.png',
-              width: 100,
-            ),
-            Image.asset(
-              'images/telebirr.png',
-              width: 60,
-            )
-          ],
+        backgroundColor: const Color.fromRGBO(140, 199, 63, 1),
+        title: Container(
+          color: Colors.white,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.asset('images/ethio.png', width: 100),
+              Image.asset('images/telebirr.png', width: 60),
+            ],
+          ),
         ),
       ),
       body: Column(
@@ -60,10 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          UserIntroduction(),
-                          NotificationArea(),
-                        ],
+                        children: [UserIntroduction(), NotificationArea()],
                       ),
                       BalanceInfo(
                         label: 'Balance (ETB) ',
@@ -120,16 +112,15 @@ class _HomeScreenState extends State<HomeScreen> {
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.only(
-                    left: 8.0, right: 8, top: 5, bottom: 10),
+                  left: 8.0,
+                  right: 8,
+                  top: 5,
+                  bottom: 10,
+                ),
                 child: Column(
                   children: [
-                    GridContent(
-                      gridIcon: topGridIcon,
-                      gridLabel: topGridLabel,
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
+                    GridContent(gridIcon: topGridIcon, gridLabel: topGridLabel),
+                    const SizedBox(height: 15),
                     CarouselSlider(
                       options: CarouselOptions(
                         autoPlay: true,
@@ -146,13 +137,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             return Container(
                               height: 150,
                               width: MediaQuery.of(context).size.width,
-                              margin:
-                                  const EdgeInsets.symmetric(horizontal: 10.0),
-                              decoration: const BoxDecoration(
-                                  color: Colors.transparent),
-                              child: Container(
-                                child: image,
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 10.0,
                               ),
+                              decoration: const BoxDecoration(
+                                color: Colors.transparent,
+                              ),
+                              child: Container(child: image),
                             );
                           },
                         );
@@ -170,21 +161,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       gridIcon: bottomGridIcon,
                       gridLabel: bottomGridLabel,
                     ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.1,
-                    )
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.1),
                   ],
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
       floatingActionButton: Padding(
-        padding: const EdgeInsets.only(
-          bottom: 10.0,
-          right: 30.0,
-        ),
+        padding: const EdgeInsets.only(bottom: 10.0, right: 30.0),
         child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.75,
           child: MaterialButton(
@@ -199,17 +185,11 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(
-                    Icons.qr_code_scanner_rounded,
-                    size: 24,
-                  ),
+                  Icon(Icons.qr_code_scanner_rounded, size: 24),
                   Text(
                     '  Scan QR',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
             ),
@@ -239,10 +219,7 @@ class ImageSliderIndicator extends StatelessWidget {
         color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
-          side: const BorderSide(
-            color: Colors.green,
-            width: 1.5,
-          ),
+          side: const BorderSide(color: Colors.green, width: 1.5),
         ),
         activeShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -253,25 +230,16 @@ class ImageSliderIndicator extends StatelessWidget {
 }
 
 class DropDownLang extends StatelessWidget {
-  const DropDownLang({
-    super.key,
-  });
+  const DropDownLang({super.key});
 
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
       hint: const Text(
         'Eng..',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 13,
-        ),
+        style: TextStyle(color: Colors.white, fontSize: 13),
       ),
-      icon: const Icon(
-        Icons.arrow_drop_down,
-        color: Colors.white,
-        size: 20,
-      ),
+      icon: const Icon(Icons.arrow_drop_down, color: Colors.white, size: 20),
       items: const [],
       onChanged: (value) {},
     );

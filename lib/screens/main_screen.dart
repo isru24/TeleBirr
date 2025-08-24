@@ -11,17 +11,11 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
-  final tabs = const [
+  final tabs = [
     HomeScreen(),
-    Center(
-      child: Text('Payment'),
-    ),
-    Center(
-      child: Text('Apps'),
-    ),
-    Center(
-      child: Text('Account'),
-    ),
+    Center(child: Text('Payment')),
+    Center(child: Text('Apps')),
+    Center(child: Text('Account')),
   ];
   @override
   Widget build(BuildContext context) {
@@ -51,21 +45,12 @@ class _MainScreenState extends State<MainScreen> {
             ),
             BottomNavigationBarItem(
               label: 'Payment',
-              icon: Icon(
-                Icons.payment,
-              ),
+              icon: Icon(Icons.payment),
             ),
-            BottomNavigationBarItem(
-              label: 'Apps',
-              icon: Icon(
-                Icons.apps,
-              ),
-            ),
+            BottomNavigationBarItem(label: 'Apps', icon: Icon(Icons.apps)),
             BottomNavigationBarItem(
               label: 'Account',
-              icon: Icon(
-                Icons.person_2_outlined,
-              ),
+              icon: Icon(Icons.person_2_outlined),
             ),
           ],
         ),

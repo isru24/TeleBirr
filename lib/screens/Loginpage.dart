@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:telebirr/screens/home_screen.dart';
+import 'package:telebirr/screens/main_screen.dart';
 
 class Loginpage extends StatelessWidget {
   Loginpage({super.key});
@@ -32,9 +33,9 @@ class Loginpage extends StatelessWidget {
             ],
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 230, 245, 229),
+        backgroundColor: const Color.fromARGB(255, 230, 242, 216),
       ),
-      backgroundColor: const Color.fromARGB(255, 230, 245, 229),
+      backgroundColor: const Color.fromARGB(255, 230, 242, 216),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -115,11 +116,11 @@ class Loginpage extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
-                  );
-                }
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => MainScreen()),
+                    );
+                  }
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 2, 117, 211),

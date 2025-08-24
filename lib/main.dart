@@ -2,6 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:telebirr/screens/Loginpage.dart';
 import 'package:telebirr/screens/home_screen.dart';
+import 'package:telebirr/screens/main_screen.dart';
 
 void main() {
   runApp(DevicePreview(enabled: true, builder: (context) => MyApp()));
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       routes: {
         'login': (context) => Loginpage(),
-        'home': (context)=>HomeScreen()
+        'home': (context) => HomeScreen(),
+        'main': (context) => MainScreen(),
       }, // Wrap widgets
       home: Loginpage(),
     );
