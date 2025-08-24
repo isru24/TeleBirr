@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:telebirr/screens/home_screen.dart';
 
-class Loginpage extends StatefulWidget {
-  const Loginpage({super.key});
+class Loginpage extends StatelessWidget {
+  Loginpage({super.key});
+  final _formKey = GlobalKey<FormState>();
+  final _phoneController = TextEditingController();
 
-  @override
-  State<Loginpage> createState() => _LoginpageState();
-}
-
-class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         title: Container(
@@ -32,136 +32,134 @@ class _LoginpageState extends State<Loginpage> {
             ],
           ),
         ),
-        backgroundColor: Color.fromARGB(255, 230, 245, 229),
+        backgroundColor: const Color.fromARGB(255, 230, 245, 229),
       ),
-      backgroundColor: Color.fromARGB(255, 230, 245, 229),
-      body: Stack(
-        children: [
-          Positioned(
-            top: 10,
-            left: 270,
-            child: Text(
-              'English',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      backgroundColor: const Color.fromARGB(255, 230, 245, 229),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: Text(
+                "English",
+                style: TextStyle(
+                  fontSize: size.width * 0.05,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
-          ),
-          Positioned(
-            top: 80,
-            left: 55,
-            child: Text(
-              'Welcome to telebirr SuperApp!',
-              style: TextStyle(fontSize: 20, color: Colors.blue),
+            SizedBox(height: size.height * 0.03),
+            Text(
+              "Welcome to telebirr SuperApp!",
+              style: TextStyle(fontSize: size.width * 0.05, color: Colors.blue),
+              textAlign: TextAlign.center,
             ),
-          ),
-          Positioned(
-            top: 125,
-            left: 150,
-            child: Text(
-              'All-in-One',
-              style: TextStyle(color: Colors.blue, fontSize: 18),
-            ),
-          ),
-          Positioned(
-            top: 165,
-            left: 160,
-            child: Text(
-              'Login',
+            Text(
+              "All-in-One",
               style: TextStyle(
-                color: const Color.fromARGB(255, 0, 0, 0),
-                fontSize: 25,
+                fontSize: size.width * 0.045,
+                color: Colors.blue,
               ),
             ),
-          ),
-          Positioned(
-            top: 235,
-            left: 50,
-            child: Text(
-              'Mobile Number',
+            SizedBox(height: size.height * 0.03),
+            Text(
+              "Login",
               style: TextStyle(
-                color: const Color.fromARGB(255, 0, 0, 0),
-                fontSize: 15,
+                fontSize: size.width * 0.06,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ),
-          Positioned(
-            top: 270,
-            left: 40,
-            right: 40,
-            child: TextFormField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.lightGreen),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(color: Colors.lightGreen),
-                ),
-                hintText: 'Enter phone number',
+            SizedBox(height: size.height * 0.05),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Mobile Number",
+                style: TextStyle(fontSize: size.width * 0.04),
               ),
-              keyboardType: TextInputType.phone,
             ),
-          ),
-          Positioned(
-            top: 350,
-            left: 40,
-            right: 40,
-            child: TextButton(
-              onPressed: () {},
-              style: TextButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 2, 117, 211),
-                minimumSize: Size(double.infinity, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+            SizedBox(height: 10),
+            Form(
+              key: _formKey,
+              child: TextFormField(
+                controller: _phoneController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.lightGreen),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.lightGreen),
+                  ),
+                  hintText: "Enter Phone Number",
                 ),
+                keyboardType: TextInputType.phone,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Phone Number Is Required";
+                  }
+                  if (value.length < 10) {
+                    return "Enter Valid Phone Number";
+                  }
+                  return null;
+                },
               ),
-              child: Text("Next", style: TextStyle(color: Colors.white)),
             ),
-          ),
-          Positioned(
-            top: 420,
-            left: 70,
-            right: 40,
-            child: Text("Don't have an account?"),
-          ),
-          Positioned(
-            top: 420,
-            left: 225,
-            right: 40,
-            child: Text(
-              "Who Cares",
-              style: TextStyle(color: Colors.lightGreen),
+            SizedBox(height: size.height * 0.05),
+            SizedBox(
+              width: double.infinity,
+              height: 50,
+              child: TextButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                }
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 2, 117, 211),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: Text("Next", style: TextStyle(color: Colors.white)),
+              ),
             ),
-          ),
-          Positioned(
-            top: 590,
-            left: 120,
-            right: 40,
-            child: Text(
+            SizedBox(height: size.height * 0.03),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Don't have an account?"),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Who Cares",
+                    style: TextStyle(color: Colors.lightGreen),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: size.height * 0.1),
+            const Text(
               "Terms And Conditions",
               style: TextStyle(color: Colors.lightGreen),
             ),
-          ),
-          Positioned(
-            top: 620,
-            left: 60,
-            right: 40,
-            child: Text(
-              "@2023 Ethio telecom.All rights reserved",
-              style: TextStyle(color: const Color.fromARGB(255, 160, 160, 160)),
+            const SizedBox(height: 10),
+            const Text(
+              "@2023 Ethio telecom. All rights reserved",
+              style: TextStyle(color: Color.fromARGB(255, 160, 160, 160)),
             ),
-          ),
-          Positioned(
-            top: 645,
-            left: 150,
-            right: 40,
-            child: Text(
+            const Text(
               "1.0.0 version",
-              style: TextStyle(color: const Color.fromARGB(255, 160, 160, 160)),
+              style: TextStyle(color: Color.fromARGB(255, 160, 160, 160)),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
